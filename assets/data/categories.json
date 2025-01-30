@@ -1,0 +1,62 @@
+[
+  {
+    "categoryId": 1,
+    "title": "Real Estate",
+  },
+  {
+    "categoryId": 2,
+    "title": "Vehicles"
+  },
+  {
+    "categoryId": 3,
+    "title": "Phones"
+  },
+  {
+    "categoryId": 4,
+    "title": "Tablets"
+  },
+  {
+    "categoryId": 5,
+    "title": "Laptops"
+  },
+  {
+    "categoryId": 6,
+    "title": "Electronics"
+  },
+  {
+    "categoryId": 7,
+    "title": "Furniture"
+  },
+  {
+    "categoryId": 8,
+    "title": "Health"
+  },
+  {
+    "categoryId": 9,
+    "title": "Fashion"
+  },
+  {
+    "categoryId": 10,
+    "title": "Art"
+  },
+  {
+    "categoryId": 11,
+    "title": "Sports"
+  },
+  {
+    "categoryId": 12,
+    "title": "Kids Items"
+  },
+  {
+    "categoryId": 13,
+    "title": "Pets"
+  },
+  {
+    "categoryId": 14,
+    "title": "FoodStuff"
+  },
+  {
+    "categoryId": 15,
+    "title": "Equipment"
+  }
+]

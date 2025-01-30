@@ -1,0 +1,49 @@
+name: agoris_admin
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: any
+  get_it:
+  flutter_bloc:
+  equatable:
+  pedantic:
+  http:
+  cached_network_image:
+  another_flushbar: any
+  flutter_rating_bar:
+  flutter_screenutil:
+  intl:
+  flutter_svg:
+
+  web:
+  html:
+  dynamic_path_url_strategy:
+  data_table_2: ^2.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/svgs/
+    - assets/data/

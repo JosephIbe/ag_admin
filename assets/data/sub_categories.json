@@ -1,0 +1,72 @@
+[
+  {
+    "subCategoryId": 101,
+    "categoryId": 1,
+    "title": "For Sale"
+  },
+  {
+    "subCategoryId": 102,
+    "categoryId": 1,
+    "title": "For Rent"
+  },
+  {
+    "subCategoryId": 103,
+    "categoryId": 1,
+    "title": "Land"
+  },
+  {
+    "subCategoryId": 104,
+    "categoryId": 1,
+    "title": "Commercial Property"
+  },
+  {
+    "subCategoryId": 105,
+    "categoryId": 1,
+    "title": "Short-lets"
+  },
+  {
+    "subCategoryId": 106,
+    "categoryId": 1,
+    "title": "Event Centers"
+  },
+  {
+    "subCategoryId": 201,
+    "categoryId": 2,
+    "title": "All"
+  },
+  {
+    "subCategoryId": 202,
+    "categoryId": 2,
+    "title": "Cars"
+  },
+  {
+    "subCategoryId": 203,
+    "categoryId": 2,
+    "title": "SUVs"
+  },
+  {
+    "subCategoryId": 204,
+    "categoryId": 2,
+    "title": "Trucks"
+  },
+  {
+    "subCategoryId": 205,
+    "categoryId": 2,
+    "title": "Buses"
+  },
+  {
+    "subCategoryId": 206,
+    "categoryId": 2,
+    "title": "MotorBikes"
+  },
+  {
+    "subCategoryId": 207,
+    "categoryId": 2,
+    "title": "Boats"
+  },
+  {
+    "subCategoryId": 208,
+    "categoryId": 2,
+    "title": "Spare Parts"
+  }
+]
