@@ -126,7 +126,8 @@ class _AgorisAdminState extends State<AgorisAdmin> {
               if(state is AuthStateAuthenticated){
                 return const Dashboard();
               }
-              return const Login();
+              // return const Login();
+              return const Dashboard();
             },
           ),
 

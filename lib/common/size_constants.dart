@@ -200,4 +200,6 @@ class Sizes {
   static const double dimen_450 = 450;
   static const double dimen_500 = 500;
   static const double dimen_600 = 600;
+  static const double dimen_768 = 768;
+  static const double dimen_1390 = 1390;
 }

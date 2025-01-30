@@ -37,119 +37,11 @@ class _MarketPlaceState extends State<MarketPlace> {
               ),
               const SizedBox(height: Sizes.dimen_20),
 
-              // Items Listed Header
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     const Text(
-              //       "Items Listed",
-              //       style: TextStyle(fontSize: Sizes.dimen_20, fontWeight: FontWeight.bold),
-              //     ),
-              //
-              //     const Text(
-              //       "Keep track of items listed by users.",
-              //       style: TextStyle(fontSize: Sizes.dimen_16, color: Colors.grey),
-              //     ),
-              //     const SizedBox(height: Sizes.dimen_20),
-              //
-              //     // Search Bar
-              //     TextField(
-              //       decoration: InputDecoration(
-              //         prefixIcon: const Icon(Icons.search),
-              //         hintText: "Search item or seller name",
-              //         border: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(Sizes.dimen_10),
-              //         ),
-              //       ),
-              //     ),
-              //     const SizedBox(height: Sizes.dimen_20),
-              //   ],
-              // ),
-
-              const Text(
-                "Items Listed",
-                style: TextStyle(fontSize: Sizes.dimen_20, fontWeight: FontWeight.bold),
-              ),
-
-              const Text(
-                "Keep track of items listed by users.",
-                style: TextStyle(fontSize: Sizes.dimen_16, color: Colors.grey),
-              ),
-              const SizedBox(height: Sizes.dimen_20),
-
               // Items List Table
-              Expanded(
-                child: SingleChildScrollView(
-                  child: DataTable(
-                    // fixedTopRows: 1,
-                    // decoration: BoxDecoration(
-                    //   borderRadius: BorderRadius.circular(Sizes.dimen_10),
-                    //   color: AppColors.offWhite,
-                    // ),
-                    columns: const [
-                      DataColumn2(label: Text("Item Name"), ),
-                      DataColumn(label: Text("Category"), ),
-                      DataColumn(label: Text("Sub-Category")),
-                      DataColumn(label: Text("Price (NGN)")),
-                      DataColumn(label: Text("Negotiable")),
-                      DataColumn(label: Text("Seller Details")),
-                      DataColumn(label: Text("Seller Rating/Reviews")),
-                      DataColumn(label: Text("Date Listed")),
-                      DataColumn(label: Text("Action")),
-                    ],
-                    rows: List.generate(6, (index) {
-                      return DataRow(
-                        cells: [
-                          DataCell(
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: Sizes.dimen_20,
-                                  backgroundColor: AppColors.appBlack,
-                                ),
-                                const SizedBox(width: Sizes.dimen_10),
-                                const Text("Lorem Ipsum"),
-                              ],
-                            )
-                          ),
-                          DataCell(Text("Category $index")),
-                          DataCell(Text("Sub-category $index")),
-
-                          DataCell(Text("120000")),
-                          DataCell(Text("true")),
-
-                          const DataCell(Text("John Doe")),
-
-                          const DataCell(Row(
-                            children: [
-                              Icon(Icons.star, color: Colors.amber, size: Sizes.dimen_18),
-                              SizedBox(width: Sizes.dimen_5),
-                              Text("4.5 (93)"),
-                            ],
-                          )),
-                          const DataCell(Text("22 Jan 2023")),
-
-                          DataCell(
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: (){},
-                                  icon: Icon(Icons.pause, color: AppColors.primaryColor.withOpacity(.5),),
-                                ),
-
-                                IconButton(
-                                  onPressed: (){},
-                                  icon: Icon(Icons.delete_forever_rounded, color: AppColors.primaryColor.withOpacity(.5),),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
-                  ),
-                ),
+              const Flexible(
+                child: MarketPlaceTable(),
               ),
+
             ],
           ),
         ),
@@ -198,4 +90,110 @@ class _MarketPlaceState extends State<MarketPlace> {
     );
   }
 
+}
+
+class MarketPlaceTable extends StatelessWidget {
+  const MarketPlaceTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(Sizes.dimen_16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "Items Listed",
+              style: TextStyle(fontSize: Sizes.dimen_20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: Sizes.dimen_8),
+
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search),
+                hintText: "Search item or seller name",
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(Sizes.dimen_8)),
+              ),
+            ),
+            const SizedBox(height: Sizes.dimen_16),
+
+            Expanded(
+              child: DataTable2(
+                minWidth: Sizes.dimen_768,
+                dividerThickness: Sizes.dimen_0,
+                horizontalMargin: Sizes.dimen_12,
+                columnSpacing: Sizes.dimen_12,
+                dataRowHeight: Sizes.dimen_56,
+                showHeadingCheckBox: false,
+                headingTextStyle: Theme.of(context).textTheme.titleMedium,
+                headingRowColor: WidgetStateProperty.resolveWith((states) => AppColors.primaryColor),
+                headingRowDecoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(Sizes.dimen_16),
+                      topRight: Radius.circular(Sizes.dimen_16)
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Sizes.dimen_10),
+                  color: AppColors.offWhite,
+                ),
+                // headingRowColor: MaterialStateProperty.all(Colors.grey.shade200),
+                columns: [
+                  DataColumn2(label: Text("Item Name", style: TextStyle(color: AppColors.offWhite),), size: ColumnSize.L),
+                  DataColumn(label: Text("Category", style: TextStyle(color: AppColors.offWhite),),),
+                  DataColumn(label: Text("Sub-Category", style: TextStyle(color: AppColors.offWhite),),),
+                  DataColumn(label: Text("Seller Details", style: TextStyle(color: AppColors.offWhite),)),
+                  DataColumn(label: Text("Rating/Reviews", style: TextStyle(color: AppColors.offWhite),),),
+                  DataColumn(label: Text("Date Listed", style: TextStyle(color: AppColors.offWhite),),),
+                  DataColumn(label: Text("Actions", style: TextStyle(color: AppColors.offWhite),),),
+                ],
+                rows: List.generate(60, (index) {
+                  return DataRow(
+                    cells: [
+                      DataCell(
+                        Row(
+                          children: [
+                            const CircleAvatar(
+                              backgroundColor: Colors.black,
+                              child: Icon(Icons.image, color: Colors.white),
+                            ),
+                            const SizedBox(width: Sizes.dimen_8),
+                            const Text("Lorem Ipsum"),
+                          ],
+                        ),
+                      ),
+                      const DataCell(Text("Lorem Ipsum")),
+                      const DataCell(Text("Nord et Atrium")),
+                      DataCell(
+                        Row(
+                          children: [
+                            const CircleAvatar(
+                              backgroundImage: AssetImage("assets/user.png"),
+                            ),
+                            const SizedBox(width: Sizes.dimen_8),
+                            const Text("John Doe"),
+                          ],
+                        ),
+                      ),
+                      DataCell(
+                        Row(
+                          children: List.generate(
+                            5,
+                                (starIndex) => const Icon(Icons.star, color: Colors.amber, size: Sizes.dimen_16),
+                          ),
+                        ),
+                      ),
+                      DataCell(Text("20 Jan 2023")),
+                      const DataCell(Icon(Icons.delete, color: Colors.red)),
+                    ],
+                  );
+                }),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
