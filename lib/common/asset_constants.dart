@@ -13,6 +13,7 @@ class AssetConstants {
   static String marketplace = "$svgDir/marketplace.svg";
   static String transactions = "$svgDir/transactions.svg";
   static String users = "$svgDir/users.svg";
+  static String noItems = "$svgDir/no_items.svg";
   static String settings = "$svgDir/settings.svg";
   static String logOut = "$svgDir/logOut.svg";
 

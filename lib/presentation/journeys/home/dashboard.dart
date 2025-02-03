@@ -160,7 +160,33 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 backgroundColor: AppColors.appBlack,
               ),
-              body: pages[index]
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: pages[index]
+                  ),
+
+                  SizedBox(
+                    height: Sizes.dimen_56,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Copyright ©${DateTime.now().year} Agoris. All rights reserved.",
+                          style: const TextStyle(
+                            color: Color(0xFF545959),
+                            fontWeight: FontWeight.w600,
+                            fontSize: Sizes.dimen_12
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]
+              ),
             ),
           ),
         ],
