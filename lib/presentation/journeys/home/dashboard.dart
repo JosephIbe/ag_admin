@@ -153,12 +153,12 @@ class _DashboardState extends State<Dashboard> {
                 title: Text(
                   getTitleFromIndex(index),
                   style: TextStyle(
-                    color: AppColors.lightWhite,
+                    color: AppColors.appBlack,
                     fontWeight: FontWeight.w600,
                     fontSize: Sizes.dimen_16
                   ),
                 ),
-                backgroundColor: AppColors.appBlack,
+                backgroundColor: Colors.transparent,
               ),
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

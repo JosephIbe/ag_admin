@@ -82,6 +82,7 @@ class Sizes {
   static const double dimen_83 = 83;
   static const double dimen_84 = 84;
   static const double dimen_85 = 85;
+  static const double dimen_86 = 86;
   static const double dimen_88 = 88;
   static const double dimen_90 = 90;
   static const double dimen_91 = 91;
@@ -201,5 +202,6 @@ class Sizes {
   static const double dimen_500 = 500;
   static const double dimen_600 = 600;
   static const double dimen_768 = 768;
+  static const double dimen_800 = 800;
   static const double dimen_1390 = 1390;
 }

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:agoris_admin/presentation/widgets/market_place/delete_item.dart';
 import 'package:flutter/material.dart';
 
 import 'package:agoris_admin/common/size_constants.dart';
@@ -24,15 +25,16 @@ class _MarketPlaceState extends State<MarketPlace> {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.all(Sizes.dimen_16),
+          padding: const EdgeInsets.all(Sizes.dimen_16),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Metrics Section
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
 
@@ -71,84 +73,30 @@ class _MarketPlaceState extends State<MarketPlace> {
 
                 ],
               ),
-              SizedBox(height: Sizes.dimen_20),
+              const SizedBox(height: Sizes.dimen_20),
 
               // Items List Table
               Flexible(
-                // child: AgorisDataTable(
-                //   title: "Items Listed",
-                //   subTitle: "Keep track of items listed by users",
-                //   numColumns: 7,
-                //   columnNames: [
-                //     "Item Name",
-                //     "Category",
-                //     "Sub-Category",
-                //     "Seller Details",
-                //     "Rating/Reviews",
-                //     "Date Listed",
-                //     "Actions"
-                //   ],
-                // ),
-                child: MarketPlaceTable(),
+                fit: FlexFit.loose,
+                child: AgorisDataTable(
+                  title: "Items Listed",
+                  subTitle: "Keep track of items listed by users",
+                  numColumns: 7,
+                  columnNames: const [
+                    "Item Name",
+                    "Category",
+                    "Sub-Category",
+                    "Seller Details",
+                    "Rating/Reviews",
+                    "Date Listed",
+                    "Actions"
+                  ],
+                  emptyTableTitle: "There are no items to show",
+                  emptyTableSubTitle: "When users list items for sale, they’ll be displayed here",
+                  source: MarketPlaceDataTableSource(),
+                ),
               ),
 
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMetricCard({required String title, required String value, required String change, required Color changeColor}) {
-    return Expanded(
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Sizes.dimen_10)),
-        elevation: Sizes.dimen_2,
-        child: Padding(
-          padding: const EdgeInsets.all(Sizes.dimen_16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontSize: Sizes.dimen_16, color: Colors.grey),
-              ),
-              const SizedBox(height: Sizes.dimen_15),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-
-                  Text(
-                    value,
-                    style: TextStyle(fontSize: Sizes.dimen_24, fontWeight: FontWeight.w600, color: AppColors.appBlack),
-                  ),
-
-                  Container(
-                    height: Sizes.dimen_32,
-                    padding: const EdgeInsets.all(Sizes.dimen_8),
-                    decoration: BoxDecoration(
-                      color: changeColor.withOpacity(.2),
-                      borderRadius: const BorderRadius.all(Radius.circular(Sizes.dimen_16)),
-                    ),
-                    child: Row(
-                      children: [
-                        Icon(
-                          change.startsWith('+') ? Icons.arrow_upward : Icons.arrow_downward,
-                          color: changeColor,
-                          size: Sizes.dimen_16,
-                        ),
-                        const SizedBox(width: Sizes.dimen_5),
-
-                        Text(
-                          change,
-                          style: TextStyle(fontSize: Sizes.dimen_14, color: changeColor, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
             ],
           ),
         ),
@@ -160,7 +108,14 @@ class _MarketPlaceState extends State<MarketPlace> {
 
 class MarketPlaceTable extends StatelessWidget {
 
-  const MarketPlaceTable({super.key});
+  final String tableTitle;
+  final String tableSubTitle;
+
+  const MarketPlaceTable({
+    super.key,
+    required this.tableTitle,
+    required this.tableSubTitle
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -188,6 +143,7 @@ class MarketPlaceTable extends StatelessWidget {
             //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(Sizes.dimen_8)),
             //   ),
             // ),
+
             const SizedBox(height: Sizes.dimen_16),
 
             Expanded(
@@ -211,6 +167,10 @@ class MarketPlaceTable extends StatelessWidget {
                   ),
                 ),
                 rowsPerPage: 15,
+                showFirstLastButtons: true,
+                renderEmptyRowsInTheEnd: false,
+                isVerticalScrollBarVisible: true,
+                isHorizontalScrollBarVisible: true,
                 columns: [
                   DataColumn2(label: Text("Item Name", style: TextStyle(color: AppColors.offWhite),), size: ColumnSize.L),
                   DataColumn(label: Text("Category", style: TextStyle(color: AppColors.offWhite),),),
@@ -220,7 +180,7 @@ class MarketPlaceTable extends StatelessWidget {
                   DataColumn(label: Text("Date Listed", style: TextStyle(color: AppColors.offWhite),),),
                   DataColumn(label: Text("Actions", style: TextStyle(color: AppColors.offWhite),),),
                 ],
-                source: MarketPlaceDataTableSource(),
+                source: MarketPlaceDataTableSource(context: context),
 
                 // rows: List.generate(60, (index) {
                 //   return DataRow(
@@ -297,13 +257,12 @@ class MarketPlaceTable extends StatelessWidget {
 
 class MarketPlaceDataTableSource extends DataTableSource {
 
+  final BuildContext context;
+  MarketPlaceDataTableSource({required this.context});
+
   @override
   DataRow? getRow(int index) {
     return DataRow2(
-      onTap: (){
-        log('clicked at row:$index');
-      },
-      onSelectChanged: (v){},
       cells: [
         DataCell(
           Row(
@@ -351,7 +310,12 @@ class MarketPlaceDataTableSource extends DataTableSource {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 IconButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      showDialog(
+                        context: context,
+                        builder: (_) => DeleteItemDialog();
+                      );
+                    },
                     icon: const Icon(Icons.delete, color: Colors.red)
                 ),
 
