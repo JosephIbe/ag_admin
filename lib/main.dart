@@ -32,11 +32,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:hive/hive.dart';
 import 'package:pedantic/pedantic.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+
+  // setUrlStrategy(PathUrlStrategy()); // Enables path-based URLs
 
   // unawaited(di.init());
   await(di.init());

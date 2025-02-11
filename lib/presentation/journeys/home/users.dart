@@ -36,15 +36,15 @@ class _UsersState extends State<Users> {
                 children: [
 
                   MetricCard(
-                      title: "Gross Market Value",
-                      isCurrency: true,
-                      value: "6.48b",
-                      change: "-13%",
-                      changeColor: Colors.red
+                      title: "Total Users",
+                      isCurrency: false,
+                      value: "6.48m",
+                      change: "+13%",
+                      changeColor: Colors.greenAccent
                   ),
 
                   MetricCard(
-                      title: "Items Listed",
+                      title: "Monthly New users",
                       isCurrency: false,
                       value: "3.92m",
                       change: "+5%",
@@ -52,7 +52,7 @@ class _UsersState extends State<Users> {
                   ),
 
                   MetricCard(
-                      title: "Items Sold",
+                      title: "Weekly New Users",
                       value: "97.34k",
                       isCurrency: false,
                       change: "+5%",
@@ -60,11 +60,10 @@ class _UsersState extends State<Users> {
                   ),
 
                   MetricCard(
-                      title: "Sales Value",
-                      isCurrency: true,
-                      // value: "₦529m",
-                      value: "529m",
-                      change: "+11%",
+                      title: "Daily New Users",
+                      value: "97.34k",
+                      isCurrency: false,
+                      change: "+5%",
                       changeColor: Colors.green
                   ),
 
